@@ -1,86 +1,178 @@
-    
 <!DOCTYPE html>
 <html lang="ne">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Santosh Kafle | Official Website</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <link rel="icon" href="https://i.imgur.com/G5Z5O5y.png" type="image/png"> <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
+        /* CSS Variables for easy color management */
         :root {
-            --primary: #1a73e8;
-            --secondary: #34a853;
+            --primary: #1a73e8; /* Google Blue */
+            --secondary: #34a853; /* Google Green */
             --text-dark: #202124;
             --text-light: #5f6368;
             --bg-white: #ffffff;
-            --bg-soft: #f8f9fa;
+            --bg-soft: #e0f2f7; /* Light Sky Blue */
+            --bg-lighter: #f0f8fa; /* Even lighter sky blue for sections */
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
-        body { background-color: var(--bg-white); color: var(--text-dark); line-height: 1.6; }
+        /* Base Styles */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Poppins', sans-serif; 
+            scroll-behavior: smooth; 
+        }
+        body { 
+            background-color: var(--bg-soft); 
+            color: var(--text-dark); 
+            line-height: 1.6; 
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
 
-        /* Navigation */
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-soft); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+        /* Navigation Bar */
         nav {
             position: fixed; top: 0; width: 100%; padding: 15px 8%;
             display: flex; justify-content: space-between; align-items: center;
             background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); z-index: 1000;
             box-shadow: 0 2px 15px rgba(0,0,0,0.05);
         }
-        .logo { font-size: 20px; font-weight: 800; color: var(--primary); text-transform: uppercase; }
+        .logo { 
+            font-size: 20px; font-weight: 800; 
+            color: var(--primary); text-transform: uppercase;
+            display: flex; align-items: center;
+        }
+        .logo i { margin-right: 8px; font-size: 1.5rem; color: var(--secondary); } /* Logo Icon Style */
         nav ul { display: flex; list-style: none; }
         nav ul li { margin-left: 25px; }
-        nav ul li a { color: var(--text-dark); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
+        nav ul li a { 
+            color: var(--text-dark); text-decoration: none; 
+            font-weight: 500; font-size: 0.9rem; transition: 0.3s; 
+        }
         nav ul li a:hover { color: var(--primary); }
 
-        /* Sections */
+        /* Section Styling */
         section { padding: 100px 8%; min-height: auto; }
         .section-title { text-align: center; margin-bottom: 50px; }
-        .section-title h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 10px; color: var(--primary); }
+        .section-title p { color: var(--text-light); margin-bottom: 20px; }
         .section-title .underline { width: 60px; height: 4px; background: var(--primary); margin: 0 auto; border-radius: 2px; }
 
-        /* Hero / About Me */
-        .hero { display: flex; align-items: center; gap: 50px; background: var(--bg-soft); padding-top: 150px; }
-        .hero-img img { width: 350px; height: 350px; border-radius: 30px; object-fit: cover; box-shadow: 20px 20px 0px var(--primary); }
+        /* Hero / About Me Section */
+        .hero { 
+            display: flex; align-items: center; gap: 50px; 
+            background: linear-gradient(135deg, var(--bg-soft) 0%, var(--bg-lighter) 100%); 
+            padding-top: 150px; 
+            padding-bottom: 80px;
+            border-radius: 0 0 50px 50px; /* Rounded bottom corners for hero */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .hero-img { 
+            flex-shrink: 0; /* Prevent image from shrinking */
+            width: 320px; 
+            height: 320px; /* Square container */
+            border-radius: 50%; /* Circular image frame */
+            overflow: hidden; /* Hide overflow for circular shape */
+            box-shadow: 10px 10px 0px var(--primary), -10px -10px 0px rgba(0,0,0,0.1); /* Enhanced shadow */
+        }
+        .hero-img img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; /* Cover the circular frame */
+            display: block;
+        }
+        .hero-content { flex: 1; }
         .hero-content h1 { font-size: 3rem; margin-bottom: 15px; }
         .hero-content span { color: var(--primary); }
+        .hero-content p { color: var(--text-light); margin-bottom: 15px; }
 
-        /* Village Homestay Page */
-        .homestay-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .homestay-card { border-radius: 20px; overflow: hidden; background: var(--bg-white); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        /* Homestay & Photography Section */
+        #homestay { background-color: var(--bg-lighter); }
+        .homestay-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .homestay-card { 
+            border-radius: 20px; overflow: hidden; 
+            background: var(--bg-white); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            transition: 0.3s; 
+            border: 1px solid #e3f2fd; /* Light border */
+        }
+        .homestay-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
         .homestay-card img { width: 100%; height: 200px; object-fit: cover; }
         .homestay-info { padding: 25px; }
         .homestay-info h3 { margin-bottom: 10px; color: var(--primary); }
+        .homestay-info p { color: var(--text-light); font-size: 0.95rem; }
 
-        /* Projects Page */
-        .project-item { display: flex; align-items: center; gap: 40px; margin-bottom: 50px; background: var(--bg-soft); padding: 30px; border-radius: 20px; }
+        /* Projects Section */
+        #projects { background-color: var(--bg-white); }
+        .project-item { 
+            display: flex; align-items: center; gap: 40px; margin-bottom: 60px; 
+            background: var(--bg-lighter); padding: 30px; border-radius: 20px; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+        }
         .project-item:nth-child(even) { flex-direction: row-reverse; }
         .project-text { flex: 1; }
+        .project-text h3 { color: var(--primary); margin-bottom: 10px; }
+        .project-text p { color: var(--text-light); }
         .project-icon { font-size: 3rem; color: var(--secondary); margin-bottom: 15px; }
+        .project-img img { width: 300px; height: 200px; object-fit: cover; border-radius: 15px; box-shadow: 5px 5px 15px rgba(0,0,0,0.08); }
 
-        /* Contact Page */
-        .contact-container { max-width: 800px; margin: 0 auto; text-align: center; }
+        /* Contact Section */
+        #contact { background-color: var(--bg-lighter); border-radius: 50px 50px 0 0; box-shadow: 0 -10px 30px rgba(0,0,0,0.05); }
+        .contact-container { max-width: 800px; margin: 0 auto; text-align: center; background: var(--bg-white); padding: 50px; border-radius: 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
+        .contact-container h3 { color: var(--primary); margin-top: 25px; font-size: 1.5rem; }
         .social-links { margin-top: 30px; display: flex; justify-content: center; gap: 20px; }
-        .social-links a { width: 50px; height: 50px; background: #eee; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--text-dark); text-decoration: none; font-size: 1.2rem; transition: 0.3s; }
-        .social-links a:hover { background: var(--primary); color: white; transform: translateY(-5px); }
+        .social-links a { 
+            width: 55px; height: 55px; background: #e3f2fd; /* Light blue background */
+            display: flex; align-items: center; justify-content: center; 
+            border-radius: 50%; color: var(--primary); text-decoration: none; 
+            font-size: 1.4rem; transition: 0.3s;
+        }
+        .social-links a:hover { background: var(--primary); color: white; transform: translateY(-5px) scale(1.05); }
 
-        .btn { padding: 12px 30px; background: var(--primary); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; display: inline-block; margin-top: 20px; }
+        /* Call to Action Button */
+        .btn { 
+            padding: 12px 30px; background: var(--primary); color: white; 
+            text-decoration: none; border-radius: 50px; font-weight: 600; 
+            display: inline-block; margin-top: 20px; transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(26, 115, 232, 0.2);
+        }
+        .btn:hover { background: #1565c0; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(26, 115, 232, 0.3); }
 
-        footer { text-align: center; padding: 40px; border-top: 1px solid #eee; font-size: 0.9rem; color: var(--text-light); }
+        /* Footer */
+        footer { text-align: center; padding: 40px; border-top: 1px solid #e3f2fd; font-size: 0.9rem; color: var(--text-light); background-color: var(--bg-lighter); }
 
+        /* Responsive Design */
         @media (max-width: 900px) {
             .hero, .project-item { flex-direction: column; text-align: center; }
-            .hero-img img { width: 250px; height: 250px; box-shadow: 10px 10px 0px var(--primary); }
-            nav ul { display: none; }
+            .hero-img { 
+                width: 200px; 
+                height: 200px; 
+                box-shadow: 10px 10px 0px var(--primary), -10px -10px 0px rgba(0,0,0,0.1); 
+                margin-bottom: 30px; /* Add space below image */
+            }
+            nav ul { display: none; } /* Mobile navigation can be improved with a toggle button */
+            section { padding: 80px 5%; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .project-img img { width: 100%; height: auto; max-width: 280px; }
+            .project-item:nth-child(even) { flex-direction: column; } /* Reset order for small screens */
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">Santosh Kafle</div>
+        <div class="logo"><i class="fas fa-mountain"></i> Santosh Kafle</div>
         <ul>
             <li><a href="#about">About Me</a></li>
             <li><a href="#homestay">Village Homestay</a></li>
@@ -91,80 +183,90 @@
 
     <section class="hero" id="about">
         <div class="hero-img" data-aos="fade-right">
-            <img src="https://via.placeholder.com/400x400" alt="Santosh Kafle">
+            <img src="https://i.imgur.com/G5Z5O5y.png" alt="Santosh Kafle">
         </div>
         <div class="hero-content" data-aos="fade-left">
-            <h1>नमस्ते, म <span>सन्तोष काफ्ले</span></h1>
-            <p>म एक पर्यटन पत्रकार र सामाजिक अभियन्ता हुँ। मेरो मुख्य लक्ष्य नेपालका ओझेलमा परेका गाउँहरूलाई 'भिलेज होमस्टे' मार्फत विश्वसामु चिनाउनु र स्थानीय अर्थतन्त्रमा टेवा पुर्याउनु हो।</p>
-            <p>डिजिटल माध्यमको प्रयोग गरेर म गाउँका कथाहरू सुनाउँछु र पर्यटन प्रवर्द्धनमा क्रियाशील छु।</p>
-            <a href="#contact" class="btn">मलाई सम्पर्क गर्नुहोस</a>
+            <h1>म <span>सन्तोष काफ्ले (स्पन्दन)</span></h1>
+            <p>साहित्यिक क्षेत्रमा मलाई 'स्पन्दन' भनेर चिनिन्छ। म साहित्य सिर्जनाका साथै ब्लगिङ, युट्युब र पर्यटन पत्रकारितामा सक्रिय छु।</p>
+            <p>गाउँका सुन्दर कथाहरू र ओझेलमा परेका गन्तव्यहरूलाई संसारसामु ल्याउनु मेरो मुख्य उद्देश्य हो। प्राकृतिक सौन्दर्य र ग्रामीण जीवनको संरक्षण गर्दै दिगो पर्यटनको विकासमा म निरन्तर लागिपरेको छु।</p>
+            <a href="#contact" class="btn">मलाई सम्पर्क गर्नुहोस्</a>
         </div>
     </section>
 
     <section id="homestay">
         <div class="section-title" data-aos="fade-up">
-            <h2>Village Homestay</h2>
-            <p>हाम्रो गाउँ, हाम्रो गौरव</p>
+            <h2>Village Homestay & Photography</h2>
+            <p>हाम्रो गाउँ, हाम्रो गौरव: स्थानीय संस्कृति र प्राकृतिक सुन्दरताको अनुभव</p>
             <div class="underline"></div>
         </div>
         <div class="homestay-grid">
             <div class="homestay-card" data-aos="zoom-in">
-                <img src="https://via.placeholder.com/400x250" alt="Homestay 1">
+                <img src="https://i.imgur.com/M5uWfLd.jpg" alt="Homestay Culture">
                 <div class="homestay-info">
-                    <h3>स्थानीय संस्कृति</h3>
-                    <p>गाउँको अर्गानिक खाना र स्थानीय संस्कृतिसँगको साक्षात्कार।</p>
+                    <h3>स्थानीय संस्कृति र अर्गानिक खाना</h3>
+                    <p>गाउँको मौलिक संस्कृति, परम्परागत जीवनशैली र स्वस्थ अर्गानिक खानाको आनन्द लिनुहोस्।</p>
                 </div>
             </div>
             <div class="homestay-card" data-aos="zoom-in" data-aos-delay="100">
-                <img src="https://via.placeholder.com/400x250" alt="Homestay 2">
+                <img src="https://i.imgur.com/o1K1H4d.jpg" alt="Nature Beauty">
                 <div class="homestay-info">
-                    <h3>प्राकृतिक सुन्दरता</h3>
-                    <p>शहरको कोलाहलबाट टाढा, प्रकृतिको न्यानो काखमा बस्ने सुवर्ण अवसर।</p>
+                    <h3>मनमोहक प्राकृतिक सुन्दरता</h3>
+                    <p>शहरको कोलाहलबाट टाढा, स्वच्छ हावापानी र प्रकृतिको न्यानो काखमा शान्त पल बिताउनुहोस्।</p>
                 </div>
             </div>
             <div class="homestay-card" data-aos="zoom-in" data-aos-delay="200">
-                <img src="https://via.placeholder.com/400x250" alt="Homestay 3">
+                <img src="https://i.imgur.com/E1r1X3w.jpg" alt="Sunset View">
                 <div class="homestay-info">
-                    <h3>ग्रामीण अर्थतन्त्र</h3>
-                    <p>पर्यटन मार्फत गाउँलेहरूको जीवनस्तर उकास्ने एउटा साझा अभियान।</p>
+                    <h3>सूर्यास्तका सुन्दर दृश्यहरू</h3>
+                    <p>पहाडी डाँडाहरूबाट देखिने सूर्यास्तका मनमोहक दृश्यहरूले तपाईंको मन लोभ्याउनेछ।</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" style="background: var(--bg-soft);">
+    <section id="projects">
         <div class="section-title" data-aos="fade-up">
             <h2>Our Projects</h2>
-            <p>हाम्रा केही मुख्य अभियानहरू</p>
+            <p>हाम्रा केही मुख्य अभियानहरू र डिजिटल कार्यहरू</p>
             <div class="underline"></div>
         </div>
         
         <div class="project-item" data-aos="fade-right">
+            <div class="project-img"><img src="https://i.imgur.com/cR6z7T7.jpg" alt="Pardapachadika Gau"></div>
             <div class="project-text">
                 <div class="project-icon"><i class="fas fa-bullhorn"></i></div>
-                <h3>पर्दापछाडीका गाउँ</h3>
+                <h3>पर्दापछाडीका गाउँ अभियान</h3>
                 <p>यो अभियान अन्तर्गत हामीले प्रचारप्रसार नपाएका दुर्गम गाउँहरूको भिडियो डकुमेन्ट्री बनाएर डिजिटल प्लेटफर्ममा ल्याउने काम गर्छौं।</p>
             </div>
-            <div class="project-img"><img src="https://via.placeholder.com/300x200" style="border-radius: 15px;"></div>
         </div>
 
         <div class="project-item" data-aos="fade-left">
+            <div class="project-img"><img src="https://i.imgur.com/s6E6k4m.jpg" alt="WordPress Blog"></div>
             <div class="project-text">
-                <div class="project-icon"><i class="fas fa-microphone-alt"></i></div>
-                <h3>पर्यटन पत्रकारिता तालिम</h3>
-                <p>स्थानीय युवाहरूलाई आफ्नो ठाउँको प्रवर्द्धन आफैं कसरी गर्ने भन्ने बारेमा हामीले तालिमहरू प्रदान गर्दै आएका छौं।</p>
+                <div class="project-icon"><i class="fas fa-pen-nib"></i></div>
+                <h3>साहित्य तथा लेख ब्लग (WordPress)</h3>
+                <p>मेरो व्यक्तिगत ब्लगमा साहित्य, लेख, कविता र विभिन्न विषयमा मेरा विचारहरू पढ्न सक्नुहुन्छ।</p>
+                <a href="https://kaflesantosh.wordpress.com" target="_blank" class="btn">ब्लग हेर्नुहोस्</a>
             </div>
-            <div class="project-img"><img src="https://via.placeholder.com/300x200" style="border-radius: 15px;"></div>
+        </div>
+
+        <div class="project-item" data-aos="fade-right">
+            <div class="project-img"><img src="https://i.imgur.com/Xq1m1M5.jpg" alt="YouTube Content"></div>
+            <div class="project-text">
+                <div class="project-icon"><i class="fab fa-youtube"></i></div>
+                <h3>YouTube भिडियोहरू र डकुमेन्ट्री</h3>
+                <p>हाम्रो युट्युब च्यानलमा ग्रामीण पर्यटन, संस्कृति र समाजमा आधारित भिडियो सामग्रीहरू हेर्नुहोस्।</p>
+            </div>
         </div>
     </section>
 
     <section id="contact">
         <div class="section-title" data-aos="fade-up">
-            <h2>Contact Me</h2>
+            <h2>सम्पर्क गरौँ</h2>
+            <p>तपाईंको गाउँको कथा सुनाउनु छ वा कुनै सहकार्यको लागि मलाई यहाँ भेट्न सक्नुहुन्छ:</p>
             <div class="underline"></div>
         </div>
         <div class="contact-container" data-aos="zoom-in">
-            <p>तपाईंको गाउँको कथा सुनाउनु छ वा सहकार्य गर्नु छ भने निर्धक्क सम्पर्क गर्नुहोस्।</p>
             <h3><i class="fas fa-envelope"></i> kaflesantosh9@gmail.com</h3>
             
             <div class="social-links">
@@ -173,14 +275,13 @@
                 <a href="https://youtube.com/santoshkafle" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
                 <a href="https://instagram.com/santooshkafle" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
-            <br>
-            <a href="mailto:kaflesantosh9@gmail.com" class="btn">Email पठाउनुहोस्</a>
+            <a href="mailto:kaflesantosh9@gmail.com" class="btn">ईमेल पठाउनुहोस्</a>
         </div>
     </section>
 
     <footer>
         <p>&copy; 2026 Santosh Kafle | www.santoshkafle.com.np</p>
-        <p style="font-size: 0.75rem; margin-top: 5px;">Designed for Village Tourism Campaign</p>
+        <p style="font-size: 0.75rem; margin-top: 5px;">Designed for Village Tourism & Literary Campaign</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
