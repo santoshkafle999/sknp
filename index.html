@@ -1,4 +1,3 @@
-            
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +21,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        
         body { background-color: var(--bg-soft); color: var(--text-dark); overflow-x: hidden; }
 
         nav {
@@ -34,8 +34,14 @@
         .logo { font-size: 22px; font-weight: 800; color: var(--primary); letter-spacing: -1px; }
         nav ul { display: flex; list-style: none; }
         nav ul li { margin-left: 30px; }
-        nav ul li a { color: var(--text-dark); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: 0.3s; position: relative; }
-        nav ul li a::after { content: ''; width: 0%; height: 2px; background: var(--primary); position: absolute; bottom: -5px; left: 0; transition: 0.3s; }
+        nav ul li a { 
+            color: var(--text-dark); text-decoration: none; font-weight: 600; font-size: 0.95rem; 
+            transition: 0.3s; position: relative;
+        }
+        nav ul li a::after {
+            content: ''; width: 0%; height: 2px; background: var(--primary);
+            position: absolute; bottom: -5px; left: 0; transition: 0.3s;
+        }
         nav ul li a:hover::after { width: 100%; }
 
         section { padding: 100px 10%; }
@@ -43,36 +49,77 @@
         .section-title h2 { font-size: 2.8rem; font-weight: 800; background: linear-gradient(to right, #1e40af, #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .underline { width: 50px; height: 5px; background: var(--accent); margin: 15px auto; border-radius: 10px; }
 
-        .hero { display: flex; align-items: center; justify-content: space-between; min-height: 100vh; padding-top: 80px; background: var(--white); border-bottom-right-radius: 80px; }
+        .hero { 
+            display: flex; align-items: center; justify-content: space-between; 
+            min-height: 100vh; padding-top: 80px; background: var(--white);
+            border-bottom-right-radius: 80px;
+        }
         .hero-content { flex: 1; }
         .hero-img { flex: 1; display: flex; justify-content: flex-end; }
-        .hero-img img { width: 380px; height: 480px; border-radius: 30px; object-fit: cover; box-shadow: 30px 30px 0px var(--bg-soft), 31px 31px 0px var(--primary); transition: 0.5s; }
+        .hero-img img { 
+            width: 380px; height: 480px; border-radius: 30px; object-fit: cover; 
+            box-shadow: 30px 30px 0px var(--bg-soft), 31px 31px 0px var(--primary);
+            transition: 0.5s;
+        }
         .hero-img img:hover { transform: translate(-10px, -10px); }
         .hero-content h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 20px; color: var(--text-dark); }
         .hero-content span { color: var(--primary); }
         .hero-content p { font-size: 1.1rem; color: #64748b; margin-bottom: 30px; max-width: 500px; }
 
-        .about-container { display: flex; align-items: center; gap: 60px; background: var(--white); padding: 50px; border-radius: 40px; box-shadow: var(--shadow); }
+        .about-container { 
+            display: flex; align-items: center; gap: 60px; background: var(--white); 
+            padding: 50px; border-radius: 40px; box-shadow: var(--shadow);
+        }
         .about-img img { width: 320px; border-radius: 25px; filter: grayscale(20%); transition: 0.5s; }
+        .about-img img:hover { filter: grayscale(0%); }
         .about-text p { font-size: 1.15rem; color: #475569; line-height: 1.8; }
 
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 30px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
+        .card { 
+            background: var(--white); border-radius: 25px; overflow: hidden; 
+            transition: 0.4s; border: 1px solid rgba(0,0,0,0.03); box-shadow: var(--shadow);
+        }
+        .card:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .card img { width: 100%; height: 260px; object-fit: cover; transition: 0.5s; }
+        .card:hover img { scale: 1.05; }
+        .card-body { padding: 25px; }
+        .card-body h3 { margin-bottom: 10px; color: var(--text-dark); }
+
+        .video-container { 
+            position: relative; padding-bottom: 56.25%; height: 0; 
+            border-radius: 30px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-        .btn { padding: 15px 30px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; display: inline-block; transition: 0.3s; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); border: none; cursor: pointer; }
+        .btn { 
+            padding: 15px 35px; background: var(--primary); color: white; 
+            text-decoration: none; border-radius: 12px; font-weight: 600;
+            display: inline-block; transition: 0.3s; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            border: none; cursor: pointer;
+        }
         .btn:hover { background: #1e40af; transform: scale(1.05); }
 
         .social-links { display: flex; justify-content: center; gap: 25px; margin-top: 30px; }
-        .social-links a { font-size: 1.6rem; color: var(--text-dark); width: 55px; height: 55px; background: var(--white); display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: var(--shadow); transition: 0.4s; }
+        .social-links a { 
+            font-size: 1.6rem; color: var(--text-dark); width: 55px; height: 55px;
+            background: var(--white); display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; box-shadow: var(--shadow); transition: 0.4s;
+        }
         .social-links a:hover { background: var(--primary); color: var(--white); transform: rotate(360deg); }
 
         footer { padding: 60px; background: #0f172a; color: #94a3b8; text-align: center; }
 
-        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 3px #999; z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; 
+            background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; 
+            font-size: 30px; box-shadow: 2px 2px 3px #999; z-index: 1000; 
+            display: flex; align-items: center; justify-content: center; text-decoration: none;
+        }
 
         @media (max-width: 900px) {
             .hero { flex-direction: column-reverse; text-align: center; padding-top: 120px; }
-            .hero-img img { width: 280px; height: 350px; margin-bottom: 40px; }
+            .hero-img img { width: 280px; height: 350px; margin-bottom: 40px; box-shadow: 15px 15px var(--primary); }
             .hero-content h1 { font-size: 2.8rem; }
             .about-container { flex-direction: column; padding: 30px; }
             nav ul { display: none; }
@@ -86,6 +133,7 @@
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="#homestay">Homestay</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#support">Support</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -95,14 +143,14 @@
     <section class="hero" id="home">
         <div class="hero-content" data-aos="fade-right">
             <h1>I am <span>Santosh Kafle</span></h1>
-            <p>Tourism Journalist and Social Activist. Dedicated to sharing the untold stories of rural Nepal with the world.</p>
+            <p>Tourism Journalist and Social Activist. My mission is to share the untold stories of rural villages and bring hidden beauties of Nepal to the global stage.</p>
             <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                <a href="#contact" class="btn">Connect With Me</a>
-                <a href="#projects" class="btn" style="background: var(--white); color: var(--primary); border: 2px solid var(--primary);">My Work</a>
+                <a href="#contact" class="btn">Contact Me</a>
+                <a href="#projects" class="btn" style="background: var(--white); color: var(--primary); border: 2px solid var(--primary);">View My Work</a>
             </div>
         </div>
         <div class="hero-img" data-aos="fade-left">
-            <img src="sk4619.jpg" alt="Santosh Kafle">
+            <img src="sk4619.jpg" alt="Santosh Kafle Profile">
         </div>
     </section>
 
@@ -116,26 +164,71 @@
                 <img src="sk001.jpg" alt="About Santosh">
             </div>
             <div class="about-text">
-                <p>Commonly known as <strong>'Spandan'</strong>, I am a traveler and storyteller. My mission is to promote village tourism and document the hidden gems of our beautiful country.</p>
+                <p>In the literary world, I am widely known as <strong>'Spandan'</strong>. I am not just a traveler, but a collector of stories from the shadows of rural life. The core objective of my writing and journalism is to promote rural tourism and preserve authentic Nepalese culture.</p>
             </div>
         </div>
     </section>
 
-    <section id="projects">
+    <section id="homestay">
         <div class="section-title" data-aos="fade-up">
-            <h2>Documentaries</h2>
+            <h2>Village Homestay Experience</h2>
             <div class="underline"></div>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/m_UHCvZXV_g" title="Documentary" allowfullscreen></iframe>
+        </div>
+        <div class="grid">
+            <div class="card" data-aos="fade-up">
+                <img src="sk46191.jpg" alt="Village Homestay">
+                <div class="card-body">
+                    <h3>Village Homestay</h3>
+                    <p>Experience local hospitality and authentic rural lifestyle.</p>
+                </div>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <img src="sk46192.jpg" alt="Organic Food">
+                <div class="card-body">
+                    <h3>Organic Food</h3>
+                    <p>Taste the purity of village life with organic Dhindo, local chicken, and authentic flavors.</p>
+                </div>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <img src="sk46196.jpg" alt="Sunrise Point">
+                <div class="card-body">
+                    <h3>Sunrise View</h3>
+                    <p>Witness breathtaking sunrises from the top of serene hills.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="support" style="background: #ffffff; text-align: center; border-radius: 80px 80px 0 0;">
+    <section id="projects" style="background: white; border-radius: 80px 80px 0 0;">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Our Projects & Videos</h2>
+            <div class="underline"></div>
+        </div>
+        
+        <div style="margin-bottom: 60px; text-align: center;" data-aos="fade-up">
+            <h3 style="font-size: 2rem; margin-bottom: 10px;">The Hidden Village</h3>
+            <p style="margin-bottom: 30px; color: #64748b;">Watch our latest documentary here:</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/m_UHCvZXV_g" title="Village Documentary" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card" data-aos="fade-right">
+                <img src="sk46194.jpg" alt="Hidden Village">
+                <div class="card-body">
+                    <h3>Stories from Remote Areas</h3>
+                    <p>We have brought stories of hundreds of undiscovered villages to life through our videos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="support" style="background: #ffffff; text-align: center; padding: 80px 10%; border-radius: 80px 80px 0 0;">
         <div class="section-title" data-aos="fade-up">
             <h2>Support & Advertise</h2>
             <div class="underline"></div>
-            <p style="color: #64748b; max-width: 700px; margin: 0 auto 30px;">For secure contributions or business promotions, please contact me directly on WhatsApp using the buttons below.</p>
+            <p style="color: #64748b; max-width: 700px; margin: 0 auto 30px;">For secure contributions or business promotion inquiries, please contact me directly via WhatsApp.</p>
         </div>
 
         <div class="card" data-aos="zoom-in" style="padding: 40px; border: 2px solid #f1f5f9; max-width: 800px; margin: 0 auto;">
@@ -160,18 +253,24 @@
 
     <section id="contact" style="text-align: center; background: #f1f5f9;">
         <div class="section-title" data-aos="fade-up">
-            <h2>Connect</h2>
-            <div class="social-links">
-                <a href="https://facebook.com/spandan1990" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://tiktok.com/@spandanoffcial" target="_blank"><i class="fab fa-tiktok"></i></a>
-                <a href="https://youtube.com/santoshkafle" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="https://instagram.com/santooshkafle" target="_blank"><i class="fab fa-instagram"></i></a>
-            </div>
+            <h2>Connect With Me</h2>
+            <div class="underline"></div>
         </div>
+        <p style="font-size: 1.2rem; margin-bottom: 20px;">Email: <strong>kaflesantosh9@gmail.com</strong></p>
+        
+        <div class="social-links" data-aos="zoom-in">
+            <a href="https://facebook.com/spandan1990" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://tiktok.com/@spandanoffcial" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://youtube.com/santoshkafle" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://instagram.com/santooshkafle" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        <br><br>
+        <a href="https://kaflesantosh.wordpress.com" target="_blank" class="btn" style="background: #444;">Read My Latest Articles</a>
     </section>
 
     <footer>
-        <p>&copy; 2026 Santosh Kafle | www.santoshkafle.com.np</p>
+        <p>&copy; 2026 Santosh Kafle | <span style="color: var(--primary);">www.santoshkafle.com.np</span></p>
+        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.6;">Created for: Village Homestays and Hidden Gems.</p>
     </footer>
 
     <a href="https://wa.me/9779749835484" class="whatsapp-float" target="_blank">
@@ -181,6 +280,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
+        
         window.onscroll = function() {
             var nav = document.getElementById('navbar');
             if (window.pageYOffset > 50) {
